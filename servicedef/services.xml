@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	 Copyright (c) naofum, naofum@gmail.com All rights reserved.
+	 
+	 Licensed under the Apache License, Version 2.0 (the "License")
+	 you may not use this file except in compliance with the License.
+	 You may obtain a copy of the License at
+	 
+	 http://www.apache.org/licenses/LICENSE-2.0
+	 
+	 Unless required by applicable law or agreed to in writing, software
+	 distributed under the License is distributed on an "AS IS" BASIS,
+	 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 See the License for the specific language governing permissions and
+	 limitations under the License.
+-->
+
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>Leasing Services</description>
+    <vendor>OFBiz</vendor>
+    <version>1.0</version>
+
+    <service name="getQuotePayment" engine="java" require-new-transaction="true" max-retry="3"
+            location="org.apache.ofbiz.leasing.LeasingServices" invoke="getQuotePayment">
+        <description>Get lease amount</description>
+        <attribute name="quoteId" type="String" mode="IN" optional="false"/>
+        <attribute name="lists" type="List" mode="OUT" optional="true"/>
+        <attribute name="price" type="String" mode="OUT" optional="true"/>
+        <attribute name="paymentDay" type="String" mode="OUT" optional="true"/>
+        <attribute name="paymentAmount" type="String" mode="OUT" optional="true"/>
+        <attribute name="paymentTimes" type="String" mode="OUT" optional="true"/>
+        <attribute name="paymentRate" type="String" mode="OUT" optional="true"/>
+        <attribute name="leaseRate" type="String" mode="OUT" optional="true"/>
+    </service>
+    <service name="createQuotePayment" engine="java" require-new-transaction="true" max-retry="3"
+            location="org.apache.ofbiz.leasing.LeasingServices" invoke="createQuotePayment">
+        <description>Calculate lease amount</description>
+        <attribute name="quoteId" type="String" mode="IN" optional="false"/>
+        <attribute name="paymentDay" type="String" mode="INOUT" optional="true"/>
+        <attribute name="paymentAmount" type="String" mode="INOUT" optional="true"/>
+        <attribute name="paymentTimes" type="String" mode="INOUT" optional="true"/>
+        <attribute name="paymentRate" type="String" mode="INOUT" optional="true"/>
+        <attribute name="leaseRate" type="String" mode="INOUT" optional="true"/>
+        <attribute name="price" type="String" mode="OUT" optional="true"/>
+        <attribute name="lists" type="List" mode="OUT" optional="true"/>
+    </service>
+
+</services>

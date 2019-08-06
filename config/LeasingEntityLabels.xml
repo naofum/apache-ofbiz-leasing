@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	 Copyright (c) naofum, naofum@gmail.com All rights reserved.
+	 
+	 Licensed under the Apache License, Version 2.0 (the "License")
+	 you may not use this file except in compliance with the License.
+	 You may obtain a copy of the License at
+	 
+	 http://www.apache.org/licenses/LICENSE-2.0
+	 
+	 Unless required by applicable law or agreed to in writing, software
+	 distributed under the License is distributed on an "AS IS" BASIS,
+	 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 See the License for the specific language governing permissions and
+	 limitations under the License.
+-->
+
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
+
+    <property key="QuoteType.description.LEASE_QUOTE">
+        <value xml:lang="en">Lease</value>
+        <value xml:lang="ja">リース</value>
+    </property>
+    <property key="TermType.description.LEASE_TERM">
+        <value xml:lang="en">Lease</value>
+        <value xml:lang="ja">リース</value>
+    </property>
+    <property key="TermType.description.LSE_PAYMENT_TERM">
+        <value xml:lang="en">Payment (net days)</value>
+        <value xml:lang="ja">返済(営業日数)</value>
+    </property>
+    <property key="TermType.description.LSE_PAY_DAY_1">
+        <value xml:lang="en">Payment day, part 1</value>
+        <value xml:lang="ja">返済開始日(一段目)</value>
+    </property>
+    <property key="TermType.description.LSE_PAY_DAY_2">
+        <value xml:lang="en">Payment day, part 2</value>
+        <value xml:lang="ja">返済開始日(二段目)</value>
+    </property>
+    <property key="TermType.description.LSE_PAY_DAY_3">
+        <value xml:lang="en">Payment day, part 3</value>
+        <value xml:lang="ja">返済開始日(三段目)</value>
+    </property>
+    <property key="TermType.description.LSE_PAY_AMOUNT_1">
+        <value xml:lang="en">Payment amount, part 1</value>
+        <value xml:lang="ja">返済金額(一段目)</value>
+    </property>
+    <property key="TermType.description.LSE_PAY_AMOUNT_2">
+        <value xml:lang="en">Payment day, part 2</value>
+        <value xml:lang="ja">返済金額(二段目)</value>
+    </property>
+    <property key="TermType.description.LSE_PAY_AMOUNT_3">
+        <value xml:lang="en">Payment day, part 3</value>
+        <value xml:lang="ja">返済金額(三段目)</value>
+    </property>
+    <property key="TermType.description.LSE_PAY_TIMES_1">
+        <value xml:lang="en">Payment day, part 1</value>
+        <value xml:lang="ja">返済回数(一段目)</value>
+    </property>
+    <property key="TermType.description.LSE_PAY_TIMES_2">
+        <value xml:lang="en">Payment day, part 2</value>
+        <value xml:lang="ja">返済回数(二段目)</value>
+    </property>
+    <property key="TermType.description.LSE_PAY_TIMES_3">
+        <value xml:lang="en">Payment day, part 3</value>
+        <value xml:lang="ja">返済回数(三段目)</value>
+    </property>
+    <property key="TermType.description.LSE_PAYMENT_DISC">
+        <value xml:lang="en">Payment (discounted if paid within specified days)</value>
+        <value xml:lang="ja">返済(指定日数内支払時割引)</value>
+    </property>
+    <property key="TermType.description.LSE_PAYMENT_FIXDAY">
+        <value xml:lang="en">Payment (due on specified day of month)</value>
+        <value xml:lang="ja">返済(約定日DD指定)</value>
+    </property>
+    <property key="TermType.description.LSE_LATE_FEE_TERM">
+        <value xml:lang="en">Late Fee (percent)</value>
+        <value xml:lang="ja">遅延手数料(%)</value>
+    </property>
+    <property key="TermType.description.LSE_COLLECT_TERM">
+        <value xml:lang="en">Penalty For Collection Agency</value>
+        <value xml:lang="ja">回収代行者に対するペナルティ</value>
+    </property>
+    <property key="TermType.description.LSE_NORTN_ITEM_TERM">
+        <value xml:lang="en">Non-Returnable Sales Item</value>
+        <value xml:lang="ja">返品不可販売明細</value>
+    </property>
+    <property key="TermType.description.LSE_PAY_RATE">
+        <value xml:lang="en">Payment rate (percent)</value>
+        <value xml:lang="ja">年利(%)</value>
+    </property>
+    <property key="TermType.description.LSE_LEASE_RATE_TERM">
+        <value xml:lang="en">Lease rate</value>
+        <value xml:lang="ja">リース料率</value>
+    </property>
+
+</resource>

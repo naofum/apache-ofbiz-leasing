@@ -1,0 +1,1539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="QuoteLeaseCalcReport" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="500" leftMargin="5" rightMargin="5" topMargin="20" bottomMargin="20" resourceBundle="application">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<style name="defaultstyle" isDefault="true" forecolor="#000000" pattern="#,##0" fontSize="10" fontName="IPAGothic" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-HW-H"/>
+	<style name="styleDate" isDefault="false" style="defaultstyle" pattern="yyyy年MM月dd日" pdfFontName="HeiseiKakuGo-W5"/>
+	<style name="styleDateISO" isDefault="false" style="defaultstyle" pattern="yyyy-MM-dd" pdfFontName="HeiseiKakuGo-W5"/>
+	<style name="styleStr" isDefault="false" style="defaultstyle" pdfFontName="HeiseiKakuGo-W5"/>
+	<style name="styleNum" isDefault="false" style="defaultstyle" hAlign="Right" pattern="#,##0" pdfFontName="HeiseiKakuGo-W5"/>
+	<style name="styleAmt" isDefault="false" style="defaultstyle" hAlign="Right" pdfFontName="HeiseiKakuGo-W5"/>
+	<style name="stylePerc" isDefault="false" style="defaultstyle" hAlign="Right" pattern="#0.00000" pdfFontName="HeiseiKakuGo-W5"/>
+	<parameter name="_pownj" class="java.lang.String"/>
+	<parameter name="_padrs" class="java.lang.String"/>
+	<parameter name="_pcopy" class="java.lang.String"/>
+	<parameter name="_pgmid" class="java.lang.String"/>
+	<parameter name="pdate" class="java.lang.Integer"/>
+	<parameter name="in30" class="java.lang.String"/>
+	<parameter name="in32" class="java.lang.String"/>
+	<parameter name="in33" class="java.lang.String"/>
+	<parameter name="_pdate" class="java.lang.String"/>
+	<field name="quoteId" class="java.lang.String"/>
+	<field name="validFromDate" class="java.sql.Timestamp"/>
+	<field name="validThruDate" class="java.sql.Timestamp"/>
+	<field name="estimatedDeliveryDate" class="java.sql.Timestamp"/>
+	<field name="partyId" class="java.lang.String"/>
+	<field name="partyTypeId" class="java.lang.String"/>
+	<field name="groupName" class="java.lang.String"/>
+	<field name="firstName" class="java.lang.String"/>
+	<field name="lastName" class="java.lang.String"/>
+	<field name="productId" class="java.lang.String"/>
+	<field name="quantity" class="java.math.BigDecimal"/>
+	<field name="totalPaymentAmount" class="java.math.BigDecimal"/>
+	<field name="countPayments" class="java.lang.Long"/>
+	<field name="quoteItemSeqId" class="java.lang.String"/>
+	<!-- field name="pctcc" class="java.lang.String"/>
+	<field name="pctcs" class="java.lang.String"/>
+	<field name="pcsnj" class="java.lang.String"/>
+	<field name="ptrnj" class="java.lang.String"/>
+	<field name="pesno" class="java.lang.String"/>
+	<field name="pfron" class="java.lang.String"/>
+	<field name="ptoon" class="java.lang.String"/>
+	<field name="pojnj" class="java.lang.String"/>
+	<field name="pitcf" class="java.lang.String"/>
+	<field name="pcttm" class="java.lang.Integer"/>
+	<field name="pfztm" class="java.lang.String"/>
+	<field name="ppsdt" class="java.lang.String"/>
+	<field name="pfrrt" class="java.math.BigDecimal"/>
+	<field name="ptort" class="java.math.BigDecimal"/>
+	<field name="pmprc" class="java.lang.String"/>
+	<field name="pmprt" class="java.lang.String"/>
+	<field name="paprt" class="java.lang.String"/>
+	<field name="paaqa" class="java.math.BigDecimal"/>
+	<field name="pkpgp" class="java.math.BigDecimal"/>
+	<field name="paiea" class="java.math.BigDecimal"/>
+	<field name="paisa" class="java.math.BigDecimal"/>
+	<field name="paoza" class="java.math.BigDecimal"/>
+	<field name="pcoa11" class="java.lang.String"/>
+	<field name="paeta1" class="java.math.BigDecimal"/>
+	<field name="patrt1" class="java.lang.String"/>
+	<field name="pcoa21" class="java.lang.String"/>
+	<field name="paeda1" class="java.math.BigDecimal"/>
+	<field name="padrt1" class="java.lang.String"/>
+	<field name="pcoa12" class="java.lang.String"/>
+	<field name="paeta2" class="java.math.BigDecimal"/>
+	<field name="patrt2" class="java.lang.String"/>
+	<field name="pcoa22" class="java.lang.String"/>
+	<field name="paeda2" class="java.math.BigDecimal"/>
+	<field name="padrt2" class="java.lang.String"/>
+	<field name="pcoa13" class="java.lang.String"/>
+	<field name="paeta3" class="java.math.BigDecimal"/>
+	<field name="patrt3" class="java.lang.String"/>
+	<field name="pcoa23" class="java.lang.String"/>
+	<field name="paeda3" class="java.math.BigDecimal"/>
+	<field name="padrt3" class="java.lang.String"/>
+	<field name="pcoa14" class="java.lang.String"/>
+	<field name="paeta4" class="java.math.BigDecimal"/>
+	<field name="patrt4" class="java.lang.String"/>
+	<field name="pcoa24" class="java.lang.String"/>
+	<field name="paeda4" class="java.math.BigDecimal"/>
+	<field name="padrt4" class="java.lang.String"/>
+	<field name="pcoa15" class="java.lang.String"/>
+	<field name="paeta5" class="java.math.BigDecimal"/>
+	<field name="patrt5" class="java.lang.String"/>
+	<field name="pcoa25" class="java.lang.String"/>
+	<field name="paeda5" class="java.math.BigDecimal"/>
+	<field name="padrt5" class="java.lang.String"/>
+	<field name="parsa" class="java.math.BigDecimal"/>
+	<field name="pacga" class="java.math.BigDecimal"/>
+	<field name="pacna" class="java.math.BigDecimal"/>
+	<field name="panrt" class="java.lang.String"/>
+	<field name="pacma" class="java.math.BigDecimal"/>
+	<field name="pamrt" class="java.lang.String"/>
+	<field name="pappa" class="java.math.BigDecimal"/>
+	<field name="pacaa" class="java.math.BigDecimal"/>
+	<field name="pamta" class="java.math.BigDecimal"/>
+	<field name="paaaa" class="java.math.BigDecimal"/>
+	<field name="payaa" class="java.math.BigDecimal"/>
+	<field name="paart" class="java.lang.String"/>
+	<field name="payrt" class="java.lang.String"/>
+	<field name="paynt" class="java.lang.String"/>
+	<field name="pauyt" class="java.lang.String"/>
+	<field name="ptitle" class="java.lang.String"/>
+	<field name="pp1aa" class="java.math.BigDecimal"/>
+	<field name="pp2aa" class="java.math.BigDecimal"/ -->
+	<variable name="ptoon" class="java.lang.String">
+		<variableExpression><![CDATA[""]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText" x="55" y="0" width="10" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="60" y="0" width="50" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["LeaseCalc"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="110" y="0" width="10" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="200" y="0" width="200" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["*** " + $R{labels.calcReport} + " ***"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="415" y="0" width="50" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.createdDate}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleDate" x="470" y="0" width="120" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{validFromDate}]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="470" y="0" width="50" height="12">
+					<printWhenExpression><![CDATA[new Boolean(Integer.valueOf($P{pdate}.toString().substring(4, 6) + "").intValue() > 9
+					  && Integer.valueOf($P{pdate}.toString().substring(6, 8) + "").intValue() > 9)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{pdate}.toString().substring(0, 4) + "/" + $P{pdate}.toString().substring(4, 6) + "/" + $P{pdate}.toString().substring(6, 8)]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="470" y="0" width="50" height="12">
+					<printWhenExpression><![CDATA[new Boolean(Integer.valueOf($P{pdate}.toString().substring(4, 6) + "").intValue() <= 9
+					  && Integer.valueOf($P{pdate}.toString().substring(6, 8) + "").intValue() > 9)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{pdate}.toString().substring(0, 4) + "/" + $P{pdate}.toString().substring(5, 6) + "/" + $P{pdate}.toString().substring(6, 8)]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="470" y="0" width="50" height="12">
+					<printWhenExpression><![CDATA[new Boolean(Integer.valueOf($P{pdate}.toString().substring(4, 6) + "").intValue() > 9
+					  && Integer.valueOf($P{pdate}.toString().substring(6, 8) + "").intValue() < 9)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{pdate}.toString().substring(0, 4) + "/" + $P{pdate}.toString().substring(4, 6) + "/" + $P{pdate}.toString().substring(7, 8)]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="470" y="0" width="50" height="12">
+					<printWhenExpression><![CDATA[new Boolean(Integer.valueOf($P{pdate}.toString().substring(4, 6) + "").intValue() <= 9
+					  && Integer.valueOf($P{pdate}.toString().substring(6, 8) + "").intValue() < 9)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{pdate}.toString().substring(0, 4) + "/" + $P{pdate}.toString().substring(5, 6) + "/" + $P{pdate}.toString().substring(7, 8)]]></textFieldExpression>
+			</textField>
+-->
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="608" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="80" y="12" width="100" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cctc} + ":"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="160" y="12" width="130" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<!-- textFieldExpression class="java.lang.String"><![CDATA[$F{pctcc}]]></textFieldExpression -->
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{partyId}]]></textFieldExpression>
+			</textField>
+<!--
+			<staticText>
+				<reportElement key="staticText" x="190" y="12" width="10" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="195" y="12" width="20" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pctcs}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="225" y="12" width="210" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{partyTypeId}.equals( "PERSON" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<!-- textFieldExpression class="java.lang.String"><![CDATA[$F{pcsnj}]]></textFieldExpression -->
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{groupName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="225" y="12" width="210" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{partyTypeId}.equals( "PERSON" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{firstName} + " " + $F{lastName}]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="225" y="24" width="160" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ptrnj}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="80" y="36" width="100" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<!-- textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cesno} + ":"]]></textFieldExpression -->
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.quoteId} + ":"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="160" y="36" width="100" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<!-- textFieldExpression class="java.lang.String"><![CDATA[$F{pesno}]]></textFieldExpression -->
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{quoteId}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="340" y="36" width="60" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.ccton} + ":"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="400" y="36" width="25" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<!-- textFieldExpression class="java.lang.String"><![CDATA[$F{pfron}]]></textFieldExpression -->
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{quoteItemSeqId}]]></textFieldExpression>
+			</textField>
+<!--
+			<staticText>
+				<reportElement key="staticText" x="425" y="36" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[～]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="445" y="36" width="25" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{ptoon}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="80" y="48" width="100" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.ekp2209} + ":"]]></textFieldExpression>
+			</textField>
+-->
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="160" y="48" width="160" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pojnj}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="80" y="60" width="100" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.citcf} + ":"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleNum" x="160" y="60" width="15" height="12"/>
+				<textElement/>
+				<!-- textFieldExpression class="java.lang.String"><![CDATA[$F{pitcf}]]></textFieldExpression -->
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{countPayments}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="175" y="60" width="20" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.arp0207}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="230" y="60" width="10" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="245" y="60" width="15" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{pcttm}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="260" y="60" width="20" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.ekp0202}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="285" y="60" width="10" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="340" y="60" width="50" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.pfztm} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="400" y="60" width="15" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pfztm}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="415" y="60" width="20" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.ekp0202}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="80" y="72" width="90" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cpsdt} + ":"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="155" y="72" width="80" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.ekp0203}]]></textFieldExpression>
+			</textField>
+			<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="245" y="72" width="15" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ppsdt}]]></textFieldExpression>
+			</textField>
+			-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="265" y="72" width="20" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.ekp0204}]]></textFieldExpression>
+			</textField>
+			<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="80" y="84" width="90" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.pfrrt} + ":"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="160" y="84" width="30" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pfrrt}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="205" y="84" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[～]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="230" y="84" width="30" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{ptort}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="340" y="84" width="50" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.pfrrt} + ":"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="400" y="84" width="15" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pmprc}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="420" y="84" width="30" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pmprt}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="450" y="84" width="25" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($V{ptoon}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="80" y="96" width="90" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.caprt} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="160" y="96" width="40" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{paprt}]]></textFieldExpression>
+			</textField>
+-->
+			<staticText>
+				<reportElement key="staticText" x="200" y="96" width="25" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="85" y="120" width="480" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[--------------------------------------------------------------]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="132" width="170" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.paaqa} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="233" y="132" width="100" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paaqa}]]></textFieldExpression>
+			</textField>
+-->
+			<staticText>
+				<reportElement key="staticText" x="341" y="132" width="10" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="132" width="40" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["100.000"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="391" y="132" width="20" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="144" width="170" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.ekp2213} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="233" y="144" width="100" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pappa}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="180" width="170" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.paqaa} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="233" y="180" width="100" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pkpgp}]]></textFieldExpression>
+			</textField>
+-->
+			<staticText>
+				<reportElement key="staticText" x="85" y="198" width="480" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[--------------------------------------------------------------]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="210" width="190" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cieaa} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="210" width="88" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paiea}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="222" width="170" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.paisa} + ":"]]></textFieldExpression>
+			</textField>
+			<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="222" width="88" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paisa}]]></textFieldExpression>
+			</textField>
+			-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="234" width="170" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cozam} + ":"]]></textFieldExpression>
+			</textField>
+			<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="234" width="88" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paoza}]]></textFieldExpression>
+			</textField>
+			-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="246" width="60" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.pcoa1} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="150" y="246" width="70" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa11}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pcoa11}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="220" y="246" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa11}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="246" width="88" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paeta1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="341" y="246" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa11}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="246" width="40" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa11}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{patrt1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="391" y="246" width="20" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa11}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="150" y="258" width="70" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa12}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pcoa12}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="220" y="258" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa12}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="258" width="88" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa12}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paeta2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="341" y="258" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa12}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="258" width="40" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa12}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{patrt2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="391" y="258" width="20" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa12}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="150" y="270" width="70" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa13}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pcoa13}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="220" y="270" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa13}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="270" width="88" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa13}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paeta3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="341" y="270" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa13}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="270" width="40" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa13}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{patrt3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="391" y="270" width="20" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa13}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="150" y="282" width="70" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa14}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pcoa14}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="220" y="282" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa14}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="282" width="88" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa14}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paeta4}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="341" y="282" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa14}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="282" width="40" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa14}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{patrt4}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="391" y="282" width="20" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa14}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="150" y="294" width="70" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa15}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pcoa15}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="220" y="294" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa15}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="294" width="88" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa15}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paeta5}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="341" y="294" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa15}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="294" width="40" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa15}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{patrt5}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="391" y="294" width="20" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa15}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="306" width="60" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cki1308} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="150" y="306" width="70" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa21}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pcoa21}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="220" y="306" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa21}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="306" width="88" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paeda1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="341" y="306" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa21}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="306" width="40" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa21}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{padrt1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="391" y="306" width="20" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa21}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="150" y="318" width="70" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa22}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pcoa22}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="220" y="318" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa22}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="318" width="88" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa22}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paeda2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="341" y="318" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa22}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="318" width="40" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa22}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{padrt2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="391" y="318" width="20" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa22}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="150" y="330" width="70" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa23}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pcoa23}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="220" y="330" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa23}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="330" width="88" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa23}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paeda3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="341" y="330" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa23}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="330" width="40" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa23}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{padrt3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="391" y="330" width="20" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa23}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="150" y="342" width="70" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa24}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pcoa24}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="220" y="342" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa24}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="342" width="88" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa24}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paeda4}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="341" y="342" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa24}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="342" width="40" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa24}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{padrt4}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="391" y="342" width="20" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa24}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="150" y="354" width="70" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa25}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pcoa25}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="220" y="354" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa25}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="354" width="88" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa25}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paeda5}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="341" y="354" width="10" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa25}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="354" width="40" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa25}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{padrt5}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="391" y="354" width="20" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{pcoa25}.equals( "" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="366" width="200" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.parsa} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="366" width="88" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{parsa}]]></textFieldExpression>
+			</textField>
+-->
+			<staticText>
+				<reportElement key="staticText" x="85" y="390" width="480" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[--------------------------------------------------------------]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="402" width="170" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.ccgaa} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="402" width="88" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pacga}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="414" width="170" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.pcnaa} + ":"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="414" width="88" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<!-- textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pacna}]]></textFieldExpression -->
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{totalPaymentAmount}]]></textFieldExpression>
+			</textField>
+<!--
+			<staticText>
+				<reportElement key="staticText" x="341" y="414" width="10" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="414" width="40" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{panrt}]]></textFieldExpression>
+			</textField>
+-->
+			<staticText>
+				<reportElement key="staticText" x="391" y="414" width="20" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="426" width="170" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.ekp2215} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="426" width="88" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pacma}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="341" y="426" width="10" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="351" y="426" width="40" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pamrt}]]></textFieldExpression>
+			</textField>
+-->
+			<staticText>
+				<reportElement key="staticText" x="391" y="426" width="20" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="85" y="450" width="480" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[--------------------------------------------------------------]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="462" width="170" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.ccaja} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="462" width="88" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pacaa}]]></textFieldExpression>
+			</textField>
+-->
+			<staticText>
+				<reportElement key="staticText" x="85" y="498" width="480" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[--------------------------------------------------------------]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="510" width="190" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.caarm} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="510" width="88" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paaaa}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="522" width="190" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cyarm} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="245" y="522" width="88" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{payaa}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="534" width="190" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.caart} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="298" y="534" width="35" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{paart}]]></textFieldExpression>
+			</textField>
+-->
+			<staticText>
+				<reportElement key="staticText" x="338" y="534" width="10" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="546" width="190" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cyart} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="298" y="546" width="35" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{payrt}]]></textFieldExpression>
+			</textField>
+-->
+			<staticText>
+				<reportElement key="staticText" x="338" y="546" width="10" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="558" width="190" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cynrt} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="298" y="558" width="35" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{paynt}]]></textFieldExpression>
+			</textField>
+-->
+			<staticText>
+				<reportElement key="staticText" x="338" y="558" width="10" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="570" width="170" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cuyrt} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="298" y="570" width="35" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pauyt}]]></textFieldExpression>
+			</textField>
+-->
+			<staticText>
+				<reportElement key="staticText" x="338" y="570" width="10" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="85" y="592" width="480" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[--------------------------------------------------------------]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="156" width="170" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cp1aa} + ":"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="95" y="168" width="170" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.eke220615} + ":"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="233" y="156" width="100" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pp1aa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="233" y="168" width="100" height="12"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pp2aa}]]></textFieldExpression>
+			</textField>
+-->
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

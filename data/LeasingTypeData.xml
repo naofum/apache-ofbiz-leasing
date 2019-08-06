@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	 Copyright (c) naofum, naofum@gmail.com All rights reserved.
+	 
+	 Licensed under the Apache License, Version 2.0 (the "License")
+	 you may not use this file except in compliance with the License.
+	 You may obtain a copy of the License at
+	 
+	 http://www.apache.org/licenses/LICENSE-2.0
+	 
+	 Unless required by applicable law or agreed to in writing, software
+	 distributed under the License is distributed on an "AS IS" BASIS,
+	 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 See the License for the specific language governing permissions and
+	 limitations under the License.
+-->
+
+<entity-engine-xml>
+    <QuoteType description="Lease" hasTable="N" parentTypeId="" quoteTypeId="LEASE_QUOTE"/>
+
+    <TermType description="Lease" hasTable="N" parentTypeId="" termTypeId="LEASE_TERM"/>
+    <TermType description="Payment (net days)" hasTable="N" parentTypeId="LEASE_TERM" termTypeId="LSE_PAYMENT_TERM"/>
+    <TermType description="Payment day, part 1" hasTable="N" parentTypeId="LSE_PAYMENT_TERM" termTypeId="LSE_PAY_DAY_1"/>
+    <TermType description="Payment day, part 2" hasTable="N" parentTypeId="LSE_PAYMENT_TERM" termTypeId="LSE_PAY_DAY_2"/>
+    <TermType description="Payment day, part 3" hasTable="N" parentTypeId="LSE_PAYMENT_TERM" termTypeId="LSE_PAY_DAY_3"/>
+    <TermType description="Payment amount, part 1" hasTable="N" parentTypeId="LSE_PAYMENT_TERM" termTypeId="LSE_PAY_AMOUNT_1"/>
+    <TermType description="Payment amount, part 2" hasTable="N" parentTypeId="LSE_PAYMENT_TERM" termTypeId="LSE_PAY_AMOUNT_2"/>
+    <TermType description="Payment amount, part 3" hasTable="N" parentTypeId="LSE_PAYMENT_TERM" termTypeId="LSE_PAY_AMOUNT_3"/>
+    <TermType description="Payment times, part 1" hasTable="N" parentTypeId="LSE_PAYMENT_TERM" termTypeId="LSE_PAY_TIMES_1"/>
+    <TermType description="Payment times, part 2" hasTable="N" parentTypeId="LSE_PAYMENT_TERM" termTypeId="LSE_PAY_TIMES_2"/>
+    <TermType description="Payment times, part 3" hasTable="N" parentTypeId="LSE_PAYMENT_TERM" termTypeId="LSE_PAY_TIMES_3"/>
+    <TermType description="Payment (discounted if paid within specified days)" hasTable="N" parentTypeId="LEASE_TERM" termTypeId="LSE_PAYMENT_DISC"/>
+    <TermType description="Payment (due on specified day of month)" hasTable="N" parentTypeId="LEASE_TERM" termTypeId="LSE_PAYMENT_FIXDAY"/>
+    <TermType description="Late Fee (percent)" hasTable="N" parentTypeId="LEASE_TERM" termTypeId="LSE_LATE_FEE_TERM"/>
+    <TermType description="Penalty For Collection Agency" hasTable="N" parentTypeId="LEASE_TERM" termTypeId="LSE_COLLECT_TERM"/>
+    <TermType description="Non-Returnable Sales Item" hasTable="N" parentTypeId="LEASE_TERM" termTypeId="LSE_NORTN_ITEM_TERM"/>
+    <TermType description="Payment rate (percent)" hasTable="N" parentTypeId="LEASE_TERM" termTypeId="LSE_PAY_RATE"/>
+    <TermType description="Lease rate" hasTable="N" parentTypeId="LEASE_TERM" termTypeId="LSE_LEASE_RATE_TERM"/>
+
+</entity-engine-xml>

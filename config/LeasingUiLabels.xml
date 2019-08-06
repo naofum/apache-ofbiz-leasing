@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	 Copyright (c) naofum, naofum@gmail.com All rights reserved.
+	 
+	 Licensed under the Apache License, Version 2.0 (the "License")
+	 you may not use this file except in compliance with the License.
+	 You may obtain a copy of the License at
+	 
+	 http://www.apache.org/licenses/LICENSE-2.0
+	 
+	 Unless required by applicable law or agreed to in writing, software
+	 distributed under the License is distributed on an "AS IS" BASIS,
+	 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 See the License for the specific language governing permissions and
+	 limitations under the License.
+-->
+
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
+
+    <property key="Leasing">
+        <value xml:lang="en">Leasing</value>
+        <value xml:lang="ja">リース</value>
+        <value xml:lang="zh">融资租赁</value>
+    </property>
+    <property key="QuoteLeaseAmount">
+        <value xml:lang="en">Lease Amount</value>
+        <value xml:lang="ja">リース料</value>
+    </property>
+    <property key="QuoteLeaseInterest">
+        <value xml:lang="en">Interest</value>
+        <value xml:lang="ja">利息</value>
+    </property>
+    <property key="QuoteLeasePaymentTimes">
+        <value xml:lang="en">Payment Times</value>
+        <value xml:lang="ja">返済回数</value>
+    </property>
+    <property key="QuoteLeasePerYearRate">
+        <value xml:lang="en">Per Year Rate</value>
+        <value xml:lang="ja">年利（％）</value>
+    </property>
+    <property key="QuoteLeaseCost">
+        <value xml:lang="en">Cost</value>
+        <value xml:lang="ja">原価</value>
+    </property>
+    <property key="QuoteLeaseRate">
+        <value xml:lang="en">Lease Rate</value>
+        <value xml:lang="ja">リース料率</value>
+    </property>
+    <property key="QuoteLeaseRemain">
+        <value xml:lang="en">Remain</value>
+        <value xml:lang="ja">残</value>
+    </property>
+    <property key="QuoteLeaseReport">
+        <value xml:lang="en">Qoute Lease</value>
+        <value xml:lang="ja">見積書</value>
+    </property>
+    <property key="QuoteLeaseCalcReport">
+        <value xml:lang="en">Qoute Lease Calc</value>
+        <value xml:lang="ja">計算書</value>
+    </property>
+    <property key="QuoteLeasePaymentReport">
+        <value xml:lang="en">Qoute Lease Payment</value>
+        <value xml:lang="ja">返済明細書</value>
+    </property>
+    <property key="QuoteLeaseTerms">
+        <value xml:lang="en">Quote Lease Amount</value>
+        <value xml:lang="ja">リース料試算</value>
+        <value xml:lang="zh">估算租赁费用</value>
+    </property>
+
+</resource>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	 Copyright (c) naofum, naofum@gmail.com All rights reserved.
+	 
+	 Licensed under the Apache License, Version 2.0 (the "License")
+	 you may not use this file except in compliance with the License.
+	 You may obtain a copy of the License at
+	 
+	 http://www.apache.org/licenses/LICENSE-2.0
+	 
+	 Unless required by applicable law or agreed to in writing, software
+	 distributed under the License is distributed on an "AS IS" BASIS,
+	 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 See the License for the specific language governing permissions and
+	 limitations under the License.
+-->
+
+<simple-methods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Simple-Method" xsi:schemaLocation="http://ofbiz.apache.org/Simple-Method http://ofbiz.apache.org/dtds/simple-methods.xsd">
+
+    <!-- simple-method method-name="createPayment" short-description="Create a Payment">
+        <make-value entity-name="Payment" value-field="newEntity"/>
+        <set-nonpk-fields map="parameters" value-field="newEntity"/>
+        <sequenced-id sequence-name="Payment" field="paymentid" get-long-only="true"/>
+        <set from-field="paymentid" field="newEntity.paymentid"/>
+        <field-to-result field="paymentid" result-name="paymentid"/>
+        <create-value value-field="newEntity"/>
+        <check-errors/>
+    </simple-method>
+    <simple-method method-name="updatePayment" short-description="Update a Payment">
+        <entity-one entity-name="Payment" value-field="payment" auto-field-map="true"/>
+        <check-errors/>
+        <set-nonpk-fields map="parameters" value-field="payment"/>
+        <store-value value-field="payment"/>
+        <check-errors/>
+    </simple-method>
+    <simple-method method-name="deletePayment" short-description="Delete a Payment">
+        <entity-one entity-name="Payment" value-field="payment" auto-field-map="true"/>
+        <check-errors/>
+        <remove-value value-field="payment"/>
+    </simple-method>
+
+    <simple-method method-name="leasingGenericPermission" short-description="Main permission logic">
+        <set field="mainAction" from-field="parameters.mainAction"/>
+        <if-empty field="mainAction">
+            <add-error>
+                <fail-property resource="LeasingUiLabels" property="LeasingPermissionMainActionAttributeMissing"/>
+            </add-error>
+            <check-errors/>
+        </if-empty>
+        <if-has-permission permission="LEASING" action="_${parameters.mainAction}">
+            <set field="hasPermission" type="Boolean" value="true"/>
+            <field-to-result field="hasPermission"/>
+            <else>
+                <property-to-field resource="LeasingUiLabels" property="LeasingPermissionError" field="failMessage"/>
+                <set field="hasPermission" type="Boolean" value="false"/>
+                <field-to-result field="hasPermission"/>
+                <field-to-result field="failMessage"/>
+            </else>
+        </if-has-permission>
+    </simple-method -->
+</simple-methods>

@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="QuoteLeaseReport" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="500" leftMargin="5" rightMargin="5" topMargin="20" bottomMargin="20" resourceBundle="application">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<!-- style name="defaultstyle" isDefault="true" forecolor="#000000" pattern="#,##0" fontName="ＭＳ ゴシック" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-HW-H"/ -->
+	<style name="defaultstyle" isDefault="true" forecolor="#000000" pattern="#,##0" fontSize="10" fontName="IPAGothic" pdfFontName="HeiseiKakuGo-W5" pdfEncoding="UniJIS-UCS2-HW-H"/>
+	<style name="styleDate" isDefault="false" style="defaultstyle" pattern="yyyy年MM月dd日" pdfFontName="HeiseiKakuGo-W5"/>
+	<style name="styleDateISO" isDefault="false" style="defaultstyle" pattern="yyyy-MM-dd" pdfFontName="HeiseiKakuGo-W5"/>
+	<style name="styleStr" isDefault="false" style="defaultstyle" pdfFontName="HeiseiKakuGo-W5"/>
+	<style name="styleNum" isDefault="false" style="defaultstyle" hAlign="Right" pattern="#,##0" pdfFontName="HeiseiKakuGo-W5"/>
+	<style name="styleAmt" isDefault="false" style="defaultstyle" hAlign="Right" pdfFontName="HeiseiKakuGo-W5"/>
+	<style name="stylePerc" isDefault="false" style="defaultstyle" hAlign="Right" pattern="#0.000" pdfFontName="HeiseiKakuGo-W5"/>
+	<parameter name="_pownj" class="java.lang.String"/>
+	<parameter name="_padrs" class="java.lang.String"/>
+	<parameter name="_pcopy" class="java.lang.String"/>
+	<parameter name="in85" class="java.lang.String"/>
+	<parameter name="uiLabelMap" class="java.util.Map"/>
+	<parameter name="entityLabelMap" class="java.util.Map"/>
+	<field name="quoteId" class="java.lang.String"/>
+	<field name="validFromDate" class="java.sql.Timestamp"/>
+	<field name="validThruDate" class="java.sql.Timestamp"/>
+	<field name="estimatedDeliveryDate" class="java.sql.Timestamp"/>
+	<field name="partyId" class="java.lang.String"/>
+	<field name="partyTypeId" class="java.lang.String"/>
+	<field name="groupName" class="java.lang.String"/>
+	<field name="firstName" class="java.lang.String"/>
+	<field name="lastName" class="java.lang.String"/>
+	<field name="productId" class="java.lang.String"/>
+	<field name="uomId" class="java.lang.String"/>
+	<field name="quantity" class="java.math.BigDecimal"/>
+	<field name="quoteUnitPrice" class="java.math.BigDecimal"/>
+	<field name="totalPaymentAmount" class="java.math.BigDecimal"/>
+	<field name="countPayments" class="java.lang.Long"/>
+<!--
+	<field name="pesno" class="java.lang.String"/>
+	<field name="pyy01" class="java.lang.String"/>
+	<field name="pmm01" class="java.lang.String"/>
+	<field name="pdd01" class="java.lang.String"/>
+	<field name="pcs01" class="java.lang.String"/>
+	<field name="pyy02" class="java.lang.String"/>
+	<field name="pmm02" class="java.lang.String"/>
+	<field name="pdd02" class="java.lang.String"/>
+	<field name="pyy03" class="java.lang.String"/>
+	<field name="pnen1" class="java.lang.String"/>
+	<field name="pmm03" class="java.lang.String"/>
+	<field name="ptuk1" class="java.lang.String"/>
+	<field name="pdd03" class="java.lang.String"/>
+	<field name="pday1" class="java.lang.String"/>
+	<field name="pipdt" class="java.lang.String"/>
+	<field name="pad1j" class="java.lang.String"/>
+	<field name="pad2j" class="java.lang.String"/>
+	<field name="pha4j" class="java.lang.String"/>
+	<field name="pmkn1" class="java.lang.String"/>
+	<field name="pojn1" class="java.lang.String"/>
+	<field name="pojq1" class="java.lang.Integer"/>
+	<field name="poju1" class="java.lang.String"/>
+	<field name="pmkn2" class="java.lang.String"/>
+	<field name="pojn2" class="java.lang.String"/>
+	<field name="pojq2" class="java.lang.Integer"/>
+	<field name="poju2" class="java.lang.String"/>
+	<field name="pmkn3" class="java.lang.String"/>
+	<field name="pojn3" class="java.lang.String"/>
+	<field name="pojq3" class="java.lang.Integer"/>
+	<field name="poju3" class="java.lang.String"/>
+	<field name="pmkn4" class="java.lang.String"/>
+	<field name="pojn4" class="java.lang.String"/>
+	<field name="pojq4" class="java.lang.Integer"/>
+	<field name="poju4" class="java.lang.String"/>
+	<field name="pmkn5" class="java.lang.String"/>
+	<field name="pojn5" class="java.lang.String"/>
+	<field name="pojq5" class="java.lang.Integer"/>
+	<field name="poju5" class="java.lang.String"/>
+	<field name="pcs02" class="java.lang.String"/>
+	<field name="ppccc" class="java.lang.String"/>
+	<field name="pkomk" class="java.lang.String"/>
+	<field name="paqaa" class="java.math.BigDecimal"/>
+	<field name="pen09" class="java.lang.String"/>
+	<field name="pcnaa" class="java.math.BigDecimal"/>
+	<field name="pen01" class="java.lang.String"/>
+	<field name="pcnta" class="java.math.BigDecimal"/>
+	<field name="pen02" class="java.lang.String"/>
+	<field name="pns01" class="java.lang.String"/>
+	<field name="pppaa" class="java.math.BigDecimal"/>
+	<field name="pen03" class="java.lang.String"/>
+	<field name="pns02" class="java.lang.String"/>
+	<field name="pppta" class="java.math.BigDecimal"/>
+	<field name="pen04" class="java.lang.String"/>
+	<field name="pknaa" class="java.math.BigDecimal"/>
+	<field name="pen05" class="java.lang.String"/>
+	<field name="pknta" class="java.math.BigDecimal"/>
+	<field name="pen06" class="java.lang.String"/>
+	<field name="pitcf" class="java.lang.Integer"/>
+	<field name="pkai1" class="java.lang.String"/>
+	<field name="pcmaa" class="java.math.BigDecimal"/>
+	<field name="pen07" class="java.lang.String"/>
+	<field name="pcmta" class="java.math.BigDecimal"/>
+	<field name="pen08" class="java.lang.String"/>
+	<field name="ptxt2" class="java.lang.String"/>
+	<field name="psk01" class="java.lang.String"/>
+	<field name="psk02" class="java.lang.String"/>
+	<field name="psk11" class="java.lang.String"/>
+	<field name="psk12" class="java.lang.String"/>
+	<field name="psh91" class="java.lang.String"/>
+	<field name="psh92" class="java.lang.String"/>
+	<field name="psh01" class="java.lang.String"/>
+	<field name="psh02" class="java.lang.String"/>
+	<field name="psh11" class="java.lang.String"/>
+	<field name="psh12" class="java.lang.String"/>
+	<field name="ptxt1" class="java.lang.String"/>
+	<field name="pcs03" class="java.lang.String"/>
+	<field name="prm01" class="java.lang.String"/>
+	<field name="prm02" class="java.lang.String"/>
+	<field name="prm03" class="java.lang.String"/>
+	<field name="pp1aa" class="java.math.BigDecimal"/>
+	<field name="pp2aa" class="java.math.BigDecimal"/>
+	<field name="psk03" class="java.lang.String"/>
+	<field name="psk13" class="java.lang.String"/>
+	<field name="psh03" class="java.lang.String"/>
+	<field name="psh13" class="java.lang.String"/>
+	<field name="psh93" class="java.lang.String"/>
+	<field name="psk04" class="java.lang.String"/>
+	<field name="psk14" class="java.lang.String"/>
+	<field name="psh04" class="java.lang.String"/>
+	<field name="psh14" class="java.lang.String"/>
+	<field name="psh94" class="java.lang.String"/>
+	<field name="pepd1" class="java.lang.String"/>
+	<field name="pepd2" class="java.lang.String"/>
+	<field name="pepd3" class="java.lang.String"/>
+	<field name="pns03" class="java.lang.String"/>
+-->
+	<group name="Group1" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{quoteId}]]></groupExpression>
+		<groupHeader>
+			<band splitType="Stretch"/>
+		</groupHeader>
+		<groupFooter>
+			<band splitType="Stretch"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band height="782" splitType="Stretch">
+			<textField>
+				<reportElement key="textField" style="styleStr" x="260" y="12" width="120" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.quoteReport}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="407" y="36" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.quoteId}+":"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="252" y="61" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="432" y="145" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.approved}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="507" y="145" width="39" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.created}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="65" y="168" width="210" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.thanksForQuoteRequest}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="180" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["( "+$R{labels.validThru}+":"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="218" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.estimatedDeliveryDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="231" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.deliveryPlace}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="278" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.assetName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="64" y="290" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.assetQuantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="337" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["( "+$R{labels.supplier}+" )"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="64" y="349" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.totalPurchaseAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="387" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.deposit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="459" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.totalLeaseAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="482" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.paymentTimes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="495" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.leaseAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="539" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.paymentForLease}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="156" y="539" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.dueDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="347" y="539" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.payMethod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="679" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.maintainance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="704" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.others}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="47" y="758" width="480" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.isNotAgreementNote}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line" x="47" y="72" width="245" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement key="rectangle" mode="Transparent" x="392" y="144" width="150" height="60"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement key="line" x="392" y="156" width="150" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="442" y="157" width="1" height="47"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="492" y="144" width="1" height="60"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement key="rectangle" mode="Transparent" x="47" y="216" width="495" height="48"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement key="line" x="47" y="228" width="495" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="142" y="216" width="1" height="48"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement key="rectangle" mode="Transparent" x="47" y="276" width="495" height="240"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement key="line" x="47" y="359" width="495" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="47" y="384" width="495" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="47" y="456" width="495" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="47" y="480" width="495" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="47" y="492" width="495" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="142" y="276" width="1" height="240"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement key="rectangle" mode="Transparent" x="47" y="538" width="495" height="108"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement key="line" x="65" y="550" width="477" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="65" y="574" width="477" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="64" y="550" width="1" height="96"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="142" y="538" width="1" height="108"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="332" y="538" width="1" height="108"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement key="rectangle" mode="Transparent" x="47" y="677" width="495" height="73"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement key="line" x="47" y="700" width="495" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line" x="142" y="677" width="1" height="73"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="77" y="601" width="100" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.leaseAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="77" y="553" width="100" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.deposit}]]></textFieldExpression>
+			</textField>
+<!--
+			<textField>
+				<reportElement key="textField" style="styleStr" x="153" y="180" width="18" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cdyer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="178" y="180" width="17" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cmont}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="203" y="180" width="24" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cdday}+" )"]]></textFieldExpression>
+			</textField>
+-->
+			<textField>
+				<reportElement key="textField" style="styleStr" x="215" y="180" width="24" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" )"]]></textFieldExpression>
+			</textField>
+<!--
+			<textField>
+				<reportElement key="textField" style="styleStr" x="507" y="48" width="17" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cmont}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="482" y="48" width="18" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cdyer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="532" y="48" width="24" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cdday}]]></textFieldExpression>
+			</textField>
+-->
+			<line>
+				<reportElement key="line" x="47" y="408" width="495" height="1"/>
+			</line>
+			<line>
+				<reportElement key="line" x="47" y="432" width="495" height="1"/>
+			</line>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="434" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.sellAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="54" y="411" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.advancedPayment}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line" x="65" y="622" width="477" height="1"/>
+			</line>
+			<line>
+				<reportElement key="line" x="65" y="598" width="477" height="1"/>
+			</line>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="77" y="577" width="100" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.advancedPay}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="77" y="625" width="100" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.sellAmount}]]></textFieldExpression>
+			</textField>
+<!--
+			<textField>
+				<reportElement key="textField" style="styleStr" x="431" y="217" width="18" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cdyer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="479" y="217" width="24" height="12"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cdday}+")"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="454" y="217" width="17" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{labels.cmont}]]></textFieldExpression>
+			</textField>
+-->
+			<textField>
+				<reportElement key="textField" style="styleStr" x="491" y="217" width="24" height="12"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[")"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="textField" style="styleStr" x="340" y="217" width="90" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["( "+$R{labels.leaseEndDate}+":"]]></textFieldExpression>
+			</textField>
+		</band>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="780" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="460" y="36" width="120" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{quoteId}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleDate" x="460" y="48" width="100" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{validFromDate}]]></textFieldExpression>
+			</textField>
+<!--
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement key="textField" x="459" y="48" width="20" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pyy01}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="489" y="48" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pmm01}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="514" y="48" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pdd01}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="52" y="60" width="210" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pcs01}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="52" y="60" width="210" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf(!$F{partyTypeId}.equals( "PERSON" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{groupName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="52" y="60" width="210" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{partyTypeId}.equals( "PERSON" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{firstName} + " " + $F{lastName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleDate" x="130" y="180" width="120" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{validThruDate}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleDate" x="152" y="217" width="120" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{estimatedDeliveryDate}]]></textFieldExpression>
+			</textField>
+<!--
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement key="textField" x="130" y="180" width="20" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pyy02}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="160" y="180" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pmm02}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="185" y="180" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pdd02}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="217" width="20" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pyy03}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="174" y="217" width="20" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pnen1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="187" y="217" width="10" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pmm03}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="199" y="217" width="20" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ptuk1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="212" y="217" width="10" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pdd03}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="224" y="217" width="20" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pday1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="154" y="217" width="70" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pipdt}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="229" width="320" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pad1j}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="241" width="320" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pad2j}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="253" width="320" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pha4j}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="278" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pmkn1}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="278" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{productId}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleNum" x="472" y="278" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="492" y="278" width="40" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{entityLabelMap}.get("Uom.description." + $F{uomId})]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="312" y="278" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pojn1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="472" y="278" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{pojq1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="492" y="278" width="40" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{poju1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="290" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pmkn2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="312" y="290" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pojn2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="472" y="290" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{pojq2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="492" y="290" width="40" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{poju2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="302" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pmkn3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="312" y="301" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pojn3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="472" y="302" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{pojq3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="492" y="302" width="40" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{poju3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="314" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pmkn4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="367" y="338" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pojn4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="472" y="314" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{pojq4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="492" y="314" width="40" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pojn4}+$F{poju4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="326" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pmkn5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="312" y="326" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pojn5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="472" y="326" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{pojq5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="492" y="326" width="40" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{poju5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="338" width="210" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pcs02}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="350" width="20" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ppccc}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="54" y="362" width="70" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pkomk}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="275" y="348" width="88" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{paqaa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="367" y="350" width="50" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pen09}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="275" y="348" width="100" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{quoteUnitPrice}.multiply($F{quantity})]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="275" y="362" width="88" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pcnaa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="367" y="362" width="50" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pen01}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="386" width="48" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pns01}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="275" y="386" width="88" height="12">
+					<printWhenExpression><![CDATA[new Boolean($F{pppaa}.compareTo(BigDecimal.ZERO) != 0 )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pppaa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="367" y="434" width="50" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pen02}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="410" width="50" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pns02}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="152" y="470" width="100" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($P{in85}.equals( "1" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[**********]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="275" y="458" width="88" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pknaa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="367" y="458" width="50" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pen05}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="275" y="458" width="100" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{totalPaymentAmount}]]></textFieldExpression>
+			</textField>
+<!--
+			<staticText>
+				<reportElement key="staticText" x="152" y="494" width="100" height="12">
+					<printWhenExpression><![CDATA[Boolean.valueOf($P{in85}.equals( "1" ))]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[**********]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="482" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{pitcf}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="167" y="482" width="20" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pkai1}]]></textFieldExpression>
+			</textField>
+-->
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleNum" x="152" y="482" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{countPayments}]]></textFieldExpression>
+			</textField>
+<!--
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="275" y="494" width="88" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pcmaa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="367" y="494" width="50" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pen07}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="62" y="522" width="400" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ptxt2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="157" y="552" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psk01}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="157" y="600" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psk02}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="157" y="564" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psk11}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="157" y="612" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psk12}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="347" y="552" width="180" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psh91}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="347" y="600" width="180" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psh92}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="347" y="552" width="180" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psh01}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="347" y="600" width="180" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psh02}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="347" y="564" width="180" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psh11}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="347" y="612" width="180" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psh12}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="147" y="680" width="329" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ptxt1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="147" y="702" width="330" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prm01}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="147" y="714" width="330" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prm02}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="147" y="726" width="330" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prm03}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="275" y="410" width="88" height="12">
+					<printWhenExpression><![CDATA[new Boolean($F{pp1aa}.compareTo(BigDecimal.ZERO) != 0 )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pp1aa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" style="styleAmt" x="275" y="434" width="88" height="12">
+					<printWhenExpression><![CDATA[new Boolean($F{pp2aa}.compareTo(BigDecimal.ZERO) != 0 )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{pp2aa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="367" y="410" width="50" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pen04}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="367" y="386" width="50" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pen03}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="157" y="588" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psk13}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="157" y="576" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psk03}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="347" y="576" width="180" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psh03}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="347" y="588" width="180" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psh13}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="347" y="576" width="180" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psh93}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="157" y="624" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psk04}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="157" y="636" width="160" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psk14}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="347" y="624" width="180" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psh04}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="347" y="636" width="180" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psh14}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="347" y="624" width="180" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{psh94}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="438" y="217" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pepd2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement key="textField" x="728" y="230" width="20" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pepd1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="461" y="217" width="15" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pepd3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="152" y="434" width="50" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pns03}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="395" y="217" width="34" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pepd1}]]></textFieldExpression>
+			</textField>
+-->
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
